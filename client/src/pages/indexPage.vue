@@ -1,5 +1,7 @@
 <template>
   <div class="hello">
+    <v-link href='/about'>click aki</v-link>
+    <h1>{{messege}}</h1>
     <h1>HelloWorld</h1>
     <input
       type="text"
@@ -25,13 +27,19 @@
 
 <script>
 import DatabaseService from '@/services/DatabaseService'
+import VLink from '@/components/VLink.vue'
 
 export default {
+
+  components: {
+    VLink
+  },
   data () {
     return {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      messege: 'aloo'
     }
   },
   methods: {
@@ -40,7 +48,9 @@ export default {
         name: this.name,
         email: this.email,
         password: this.password
-      }).then(response => console.log(response)).catch(e => console.log(e))
+      })
+        .then(response => (this.messege = response.data.response))
+        .catch(e => console.log(e))
     }
   }
 }

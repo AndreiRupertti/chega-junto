@@ -1,15 +1,14 @@
 <template>
-    <div>
-      <div id="mainbox" v-for="item in items" :key="item._id">
-        <div v-for="event in item.events" :key="event.org" class="card">
+    <div id="mainbox">
+        <div v-for="event in items" :key="event.org" class="card">
           <div class="title">
             <h1>{{event.org}}</h1>
           </div>
           <div class="info">
             <p>{{event.date}} - {{event.schedule}}</p>
           </div>
+          <button type="button" name="button">Participar</button>
         </div>
-      </div>
       <slot></slot>
     </div>
 </template>
@@ -27,7 +26,12 @@ export default {
     findEvents () {
       DatabaseService.findEvents()
         .then(response => {
-          this.items = response.data.item
+          var orgs = response.data.item
+          orgs.forEach((org) => {
+            org.events.forEach((event) => {
+              this.items.push(event)
+            })
+          })
         })
         .catch(e => console.log(e))
     }
@@ -68,19 +72,14 @@ justify-content: space-between;
   align-items: center;
   justify-content:center;
 }
-h1{
-
-}
-
-p{
-
-}
 
 #mainbox{
+  background-color: purple;
   font-family: calibri;
   box-sizing: border-box;
-  justify-content: center;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+
 }
 </style>

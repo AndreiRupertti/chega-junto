@@ -1,40 +1,17 @@
 <template>
   <div class="hello">
-    <v-link href='/about'>click aki</v-link>
     <h1>HelloWorld</h1>
-    <input
-      type="text"
-      v-model="name"
-      name="name"
-      placeholder='Name' />
-      <br>
-    <input
-      type="email"
-      v-model="email"
-      name="email"
-      placeholder='Email' />
-      <br>
-    <input
-      type="password"
-      v-model="password"
-      name="password"
-      placeholder='Password' />
-      <br>
-      <button @click="insertItem()">Save</button>
-      <br>
-      <v-card></v-card>
+    <v-card></v-card>
   </div>
 </template>
 
 <script>
 import DatabaseService from '@/services/DatabaseService'
-import VLink from '@/components/VLink.vue'
 import VCard from '@/components/VCard.vue'
 
 export default {
 
   components: {
-    VLink,
     VCard
   },
   data () {

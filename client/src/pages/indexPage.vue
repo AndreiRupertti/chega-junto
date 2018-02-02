@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
     <v-link href='/about'>click aki</v-link>
-    <h1>{{messege}}</h1>
     <h1>HelloWorld</h1>
     <input
       type="text"
@@ -22,24 +21,27 @@
       placeholder='Password' />
       <br>
       <button @click="insertItem()">Save</button>
+      <br>
+      <v-card></v-card>
   </div>
 </template>
 
 <script>
 import DatabaseService from '@/services/DatabaseService'
 import VLink from '@/components/VLink.vue'
+import VCard from '@/components/VCard.vue'
 
 export default {
 
   components: {
-    VLink
+    VLink,
+    VCard
   },
   data () {
     return {
       name: '',
       email: '',
-      password: '',
-      messege: 'aloo'
+      password: ''
     }
   },
   methods: {

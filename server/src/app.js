@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const dbController = require('./controllers/db_controller')
 const Person = require('./models/Person')
+const Oraganization = require('./models/Organization')
 const app = express()
 
 mongoose.connect('mongodb://localhost:27017/chega-junto')
@@ -15,13 +16,13 @@ app.use(bodyParser.json())
 app.use(morgan('combined'))
 app.use(cors())
 
-app.get('/', (req, res) => {
-  const personController = dbController(Person)
+app.get('/findEvents', (req, res) => {
+  const orgController = dbController(Oraganization)
 
-  personController.findAll()
+  orgController.findAll()
     .then(response => {
-      console.log(response)
-      res.send(response)
+      const item = response.map((item) => item)
+      res.send({item})
     })
     .catch(err => {
       console.log(err)

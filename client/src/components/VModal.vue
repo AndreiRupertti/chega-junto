@@ -25,7 +25,7 @@
         <p>{{selectedEvent.description}}</p>
       </div>
       <div class="is-row full-center">
-        <button class="btn-shadow">
+        <button @click="alert()" class="btn-shadow">
           Quero Participar
         </button  >
       </div>
@@ -35,7 +35,12 @@
 
 <script>
 export default {
-  props: ['selectedEvent']
+  props: ['selectedEvent'],
+  methods: {
+    alert () {
+      alert(`Você decidiu participar do evento ${this.selectedEvent.title}. Estamos contando com você!`);
+    }
+  }
 }
 </script>
 
@@ -52,8 +57,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content:space-between;
-  /* align-items:baseline; */
-  /* flex-wrap: wrap; */
 }
 .title-modal{
   display: flex;
@@ -71,7 +74,6 @@ export default {
 .btn-join{
   min-width: 20vw;
   min-height: 5vh;
-  /* border-radius: 100; */
   background-color: aqua;
 }
 </style>

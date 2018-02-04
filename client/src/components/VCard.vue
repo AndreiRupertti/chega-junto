@@ -26,7 +26,6 @@ export default {
   data () {
     return {
       events: [],
-      cardId: 'Não encontrado',
       selectedEvent: {}
     }
   },
@@ -102,7 +101,6 @@ export default {
   color: darkgray;
 }
 #mainbox{
-  font-family: calibri;
   box-sizing: border-box;
   min-width: 100%;
   display: flex;

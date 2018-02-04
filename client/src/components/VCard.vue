@@ -1,85 +1,118 @@
 <template>
     <div id="mainbox">
-        <div v-for="event in items" :key="event.org" class="card">
-          <div class="title">
-            <h1>{{event.org}}</h1>
+        <div v-for="event in events" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card">
+          <div class="title-box">
+            <div class="title-card">{{event.title}}</div>
           </div>
           <div class="info">
-            <p>{{event.date}} - {{event.schedule}}</p>
+            <span><h4>{{event.organization}}</h4></span>
+            <span>Data: {{event.date}}</span>
+            <span>Horário: {{event.schedule}} </span>
           </div>
-          <button type="button" name="button">Participar</button>
         </div>
+        <v-modal :cardId='cardId' :selectedEvent='selectedEvent'></v-modal>
       <slot></slot>
     </div>
 </template>
 
 <script>
 import DatabaseService from '@/services/DatabaseService'
+import VModal from '@/components/VModal.vue'
 
 export default {
+  components: {
+    VModal
+  },
   data () {
     return {
-      items: []
+      events: [],
+      cardId: 'Não encontrado',
+      selectedEvent: {}
     }
   },
   methods: {
-    findEvents () {
-      DatabaseService.findEvents()
+    findEvents (dbService) {
+      dbService.findEvents()
         .then(response => {
-          var orgs = response.data.item
-          orgs.forEach((org) => {
-            org.events.forEach((event) => {
-              this.items.push(event)
-            })
-          })
+          const allOrgs = response.data.allOrgs
+          allOrgs.forEach((org) => this.events = this.events.concat(org.events))
         })
         .catch(e => console.log(e))
+    },
+    findEventById (id) {
+      this.events.forEach((event) => {
+        if (event._id === id) {
+          this.selectedEvent = event
+        }
+      })
+    },
+    show (id) {
+      this.cardId = id
+      this.$modal.show('event-modal')
+    },
+    hide () {
+      this.$modal.hide('event-modal')
     }
   },
   beforeMount () {
-    this.findEvents()
+    this.findEvents(DatabaseService)
   }
 }
 </script>
 
 <style scoped>
-/* .card{
-  background-color: white;
-  width: 10%;
-  height: 15%;
-
-} */
 .card{
-width: 15%;
-border: 1px solid gray;
-box-shadow: 1px 1px 3px #888;
-border-top: 10px solid green;
-min-height: 150px;
-padding-: 10px;
-margin: 10px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-
+  max-width: 80vw;
+  min-width: 20vw;
+  border: 1px solid gray;
+  box-shadow: 1px 1px 3px #888;
+  border-top: 10px solid MediumSeaGreen;
+  min-height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 3vw;
+  flex-grow: 3;
 }
-.title{
+.card:hover {
+    cursor: pointer;
+    min-width: 25vw;
+    min-height: 30vh;
+    box-shadow: 5px 5px 3px #888;
+    transition: min-width 0.5s, min-height 0.5s ;
+    background-color: Azure;
+}
+.title-box{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.title-card{
+  font-size: 1.8em;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .info{
   display: flex;
-  align-items: center;
-  justify-content:center;
+  flex-direction:column;
+  padding: 5%;
+  text-align: right;
+  color: darkgray;
 }
-
 #mainbox{
-  background-color: purple;
   font-family: calibri;
   box-sizing: border-box;
-  width: 100%;
+  min-width: 100%;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
 
+}
+#mainbox::after {
+  content: '';
+  width: 100%;
 }
 </style>

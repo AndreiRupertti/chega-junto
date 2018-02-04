@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>HelloWorld</h1>
+    <h1>Chega Junto!</h1>
     <v-card></v-card>
   </div>
 </template>

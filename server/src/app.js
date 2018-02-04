@@ -1,7 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const morgan = require('morgan')
 const mongoose = require('mongoose')
 const dbController = require('./controllers/db_controller')
 const Person = require('./models/Person')
@@ -13,16 +12,23 @@ mongoose.connect('mongodb://localhost:27017/chega-junto')
 app.set('port', (process.env.PORT || 3000))
 
 app.use(bodyParser.json())
-app.use(morgan('combined'))
 app.use(cors())
 
 app.get('/findEvents', (req, res) => {
-  const orgController = dbController(Oraganization)
-
-  orgController.findAll()
-    .then(response => {
-      const item = response.map((item) => item)
-      res.send({item})
+  Oraganization.find()
+    .then(allOrgs => {
+      res.send({allOrgs})
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
+app.get('/findEventById', (req, res) => {
+  // console.log(req.body.cardId)
+  Oraganization.find({'events._id': req.body.id})
+    .then(event => {
+      console.log(event)
+      res.send({event})
     })
     .catch(err => {
       console.log(err)

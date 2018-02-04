@@ -6,5 +6,8 @@ export default {
   },
   findEvents () {
     return Api().get('findEvents')
+  },
+  findEventById (id) {
+    return Api().get('findEventById', id)
   }
 }

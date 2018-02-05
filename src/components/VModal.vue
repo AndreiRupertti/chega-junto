@@ -4,15 +4,15 @@
       <div class="header-modal">
         <div class="title-modal">
           <div class="is-collum full-center">
-          <h1 class="title-text">{{selectedEvent.title}}</h1>
-          <div class="list-info">
-            <ul>
-              <li>Organização: {{selectedEvent.organization}}</li>
-              <li>Data: {{selectedEvent.date}}</li>
-              <li>Horário: {{selectedEvent.schedule}}</li>
-            </ul>
+            <h1 class="title-text">{{selectedEvent.title}}</h1>
+            <div class="list-info">
+              <ul>
+                <li>Organização: {{selectedEvent.organization}}</li>
+                <li>Data: {{selectedEvent.date}}</li>
+                <li>Horário: {{selectedEvent.schedule}}</li>
+              </ul>
+            </div>
           </div>
-        </div>
         </div>
         <div class="top-right">
           <button class="btn-close" @click="$modal.hide('event-modal')">
@@ -38,7 +38,7 @@ export default {
   props: ['selectedEvent'],
   methods: {
     alert () {
-      alert(`Você decidiu participar do evento ${this.selectedEvent.title}. Estamos contando com você!`);
+      alert(`Você decidiu participar do evento ${this.selectedEvent.title}. Estamos contando com você!`)
     }
   }
 }

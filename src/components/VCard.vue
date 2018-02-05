@@ -10,7 +10,7 @@
             <span>Horário: {{event.schedule}} </span>
           </div>
         </div>
-        <v-modal :cardId='cardId' :selectedEvent='selectedEvent'></v-modal>
+        <v-modal :selectedEvent='selectedEvent'></v-modal>
       <slot></slot>
     </div>
 </template>
@@ -31,19 +31,21 @@ export default {
   },
   methods: {
     findEvents (dbService) {
-      dbService.findEvents()
+      dbService.findOrgs()
         .then(response => {
-          const allOrgs = response.data.allOrgs
+          const allOrgs = response.data.query
+          /* eslint-disable */
           allOrgs.forEach((org) => this.events = this.events.concat(org.events))
+          /* eslint-enable */
         })
         .catch(e => console.log(e))
     },
     findEventById (id) {
-      this.events.forEach((event) => {
-        if (event._id === id) {
-          this.selectedEvent = event
-        }
-      })
+      /* eslint-disable */
+      DatabaseService.findEventById(id)
+        .then(response => this.selectedEvent = response.data.query[0])
+        .catch(e => console.log(e))
+      /* eslint-enable */
     },
     show (id) {
       this.cardId = id

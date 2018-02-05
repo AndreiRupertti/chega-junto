@@ -4,10 +4,10 @@ export default {
   insertItem (item) {
     return Api().post('insertItem', item)
   },
-  findEvents () {
-    return Api().get('findEvents')
+  findOrgs () {
+    return Api().get('findOrgs')
   },
   findEventById (id) {
-    return Api().get('findEventById', id)
+    return Api().post(`findEventById/${id}`)
   }
 }

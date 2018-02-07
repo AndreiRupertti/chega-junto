@@ -27,7 +27,7 @@
       <div class="is-row full-center">
         <button @click="alert()" class="btn-shadow">
           Quero Participar
-        </button  >
+        </button>
       </div>
     </div>
   </modal>

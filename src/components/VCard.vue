@@ -62,10 +62,14 @@ export default {
 </script>
 
 <style scoped>
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-device-width: 900px) {
   .card{
     max-width: 80vw;
-    min-width: 20vw;
+    min-width: 40vw;
+    flex-grow: 3;
+  }
+  #mainbox{
+      justify-content: center;
   }
 }
 
@@ -73,6 +77,10 @@ export default {
   .card{
     max-width: 25vw;
     min-width: 20vw;
+    flex-grow: 3;
+  }
+  #mainbox{
+      justify-content: flex-start;
   }
 }
 .card{
@@ -84,7 +92,6 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   margin: 3vw;
-  flex-grow: 3;
 }
 .card:hover {
     cursor: pointer;
@@ -117,7 +124,6 @@ export default {
   min-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
   align-items: baseline;
 
 }

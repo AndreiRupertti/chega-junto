@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="main">
     <h1>Chega Junto!</h1>
     <v-card></v-card>
   </div>

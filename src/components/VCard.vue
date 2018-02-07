@@ -1,15 +1,14 @@
 <template>
-  <div class="">
-
+  <div>
     <div class="search-box">
       <input v-model='filterText' @keyup.enter="onEnter" type="search" name="search" placeholder="pesquisar">
     </div>
-    <div id="mainbox">
-        <div v-for="event in filteredEvents" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card">
-          <div class="title-box">
-            <div class="title-card">{{event.title}}</div>
+    <div id="cardbox">
+        <div v-for="event in filteredEvents" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card is-collum">
+          <div class="full-center">
+            <div class="text-large no-text-overflow">{{event.title}}</div>
           </div>
-          <div class="info">
+          <div class="info is-collum no-text-overflow">
             <span><h4>{{event.organization}}</h4></span>
             <span>Data: {{event.date}}</span>
             <span>Horário: {{event.schedule}} </span>
@@ -85,7 +84,7 @@ export default {
     min-width: 40vw;
     flex-grow: 3;
   }
-  #mainbox{
+  #cardbox{
       justify-content: center;
   }
 }
@@ -96,7 +95,7 @@ export default {
     min-width: 20vw;
     flex-grow: 3;
   }
-  #mainbox{
+  #cardbox{
       justify-content: flex-start;
   }
 }
@@ -105,8 +104,6 @@ export default {
   box-shadow: 1px 1px 3px #888;
   border-top: 10px solid MediumSeaGreen;
   min-height: 25vh;
-  display: flex;
-  flex-direction: column;
   justify-content: space-around;
   margin: 3vw;
 }
@@ -115,36 +112,18 @@ export default {
     box-shadow: 5px 5px 3px #888;
     background-color: Azure;
 }
-.title-box{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.title-card{
-  font-size: 1.8em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 .info{
-  display: flex;
-  flex-direction:column;
   padding: 5%;
   text-align: right;
   color: darkgray;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
-#mainbox{
-  box-sizing: border-box;
+#cardbox{
   min-width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-
 }
-#mainbox::after {
+#cardbox::after {
   content: '';
   width: 100%;
 }

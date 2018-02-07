@@ -7,7 +7,7 @@ module.exports = {
       .waitForElementVisible('#app', 5000)
       .assert.elementPresent('.main ')
       .assert.containsText('h1', 'Chega Junto!')
-      .assert.elementPresent('#mainbox')
+      .assert.elementPresent('#cardbox')
       .assert.elementPresent('.card')
       .assert.elementPresent('.title-card')
       .assert.elementPresent('.info')

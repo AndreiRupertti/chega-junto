@@ -10,9 +10,19 @@
   flex-direction: row;
 }
 .full-center{
+  display: flex;
   justify-content: center;
   align-items: center;
 }
+.no-text-overflow{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text-large{
+  font-size: 1.8em
+}
+
 .btn-shadow{
   background-color: #4CAF50; /* Green */
   border: none;

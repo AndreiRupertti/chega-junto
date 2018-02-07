@@ -1,4 +1,6 @@
-*{
+html, body{
+  padding: 0;
+  margin: 0;
   font-family: 'Fira Sans', sans-serif;
 }
 .is-collum{
@@ -10,9 +12,19 @@
   flex-direction: row;
 }
 .full-center{
+  display: flex;
   justify-content: center;
   align-items: center;
 }
+.no-text-overflow{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text-large{
+  font-size: 1.8em
+}
+
 .btn-shadow{
   background-color: #4CAF50; /* Green */
   border: none;
@@ -28,7 +40,9 @@
   transition-duration: 0.4s;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-
+.btn-primary{
+  background: none;
+}
 .btn-close{
   font-size: 2.5em;
   background: none;

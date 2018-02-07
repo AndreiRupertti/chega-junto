@@ -3,7 +3,6 @@
 }
 .is-primary-dark{
   background-color: #0D1321;
-
 }
 .is-second{
   background-color: #E7E247;
@@ -23,4 +22,8 @@
 }
 .is-second-text{
   color: #ACBDBA;
+}
+
+.border-primary{
+  border: 1px solid #1D2D44;
 }

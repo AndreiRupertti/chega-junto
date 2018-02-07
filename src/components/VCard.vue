@@ -4,11 +4,11 @@
       <input v-model='filterText' @keyup.enter="onEnter" type="search" name="search" placeholder="pesquisar">
     </div>
     <div id="cardbox">
-        <div v-for="event in filteredEvents" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card is-collum">
-          <div class="full-center">
+        <div v-for="event in filteredEvents" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card border-primary is-collum">
+          <div class="full-center is-primary-text">
             <div class="text-large no-text-overflow">{{event.title}}</div>
           </div>
-          <div class="info is-collum no-text-overflow">
+          <div class="info is-second-text is-collum no-text-overflow">
             <span><h4>{{event.organization}}</h4></span>
             <span>Data: {{event.date}}</span>
             <span>Horário: {{event.schedule}} </span>
@@ -100,8 +100,6 @@ export default {
   }
 }
 .card{
-  border: 1px solid gray;
-  box-shadow: 1px 1px 3px #888;
   border-top: 10px solid MediumSeaGreen;
   min-height: 25vh;
   justify-content: space-around;
@@ -109,8 +107,8 @@ export default {
 }
 .card:hover {
     cursor: pointer;
-    box-shadow: 5px 5px 3px #888;
-    background-color: Azure;
+    box-shadow: 3px 3px 1px gray;
+    background-color: #1D2D44;
 }
 .info{
   padding: 5%;

@@ -1,6 +1,6 @@
 <template>
-  <div class="main">
-    <h1>Chega Junto!</h1>
+  <div class="main is-primary-dark">
+    <v-header></v-header>
     <v-card></v-card>
   </div>
 </template>
@@ -8,11 +8,13 @@
 <script>
 import DatabaseService from '@/services/DatabaseService'
 import VCard from '@/components/VCard.vue'
+import VHeader from '@/components/VHeader.vue'
 
 export default {
 
   components: {
-    VCard
+    VCard,
+    VHeader
   },
   data () {
     return {
@@ -36,5 +38,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

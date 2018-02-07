@@ -1,6 +1,11 @@
 <template>
+  <div class="">
+
+    <div class="search-box">
+      <input v-model='filterText' @keyup.enter="onEnter" type="search" name="search" placeholder="pesquisar">
+    </div>
     <div id="mainbox">
-        <div v-for="event in events" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card">
+        <div v-for="event in filteredEvents" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card">
           <div class="title-box">
             <div class="title-card">{{event.title}}</div>
           </div>
@@ -13,6 +18,7 @@
         <v-modal :selectedEvent='selectedEvent'></v-modal>
       <slot></slot>
     </div>
+  </div>
 </template>
 
 <script>
@@ -26,6 +32,7 @@ export default {
   data () {
     return {
       events: [],
+      filterText: '',
       selectedEvent: {}
     }
   },
@@ -53,6 +60,16 @@ export default {
     },
     hide () {
       this.$modal.hide('event-modal')
+    }
+  },
+  computed: {
+    filteredEvents () {
+      if (this.filterText !== '') {
+        let filterText = new RegExp(this.filterText, 'i')
+        return this.events.filter((event) => event.title.match(filterText))
+      } else {
+        return this.events
+      }
     }
   },
   beforeMount () {

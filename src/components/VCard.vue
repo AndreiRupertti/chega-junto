@@ -62,9 +62,20 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (max-device-width: 480px) {
+  .card{
+    max-width: 80vw;
+    min-width: 20vw;
+  }
+}
+
+@media only screen and (min-device-width: 1024px){
+  .card{
+    max-width: 25vw;
+    min-width: 20vw;
+  }
+}
 .card{
-  max-width: 80vw;
-  min-width: 20vw;
   border: 1px solid gray;
   box-shadow: 1px 1px 3px #888;
   border-top: 10px solid MediumSeaGreen;
@@ -77,10 +88,7 @@ export default {
 }
 .card:hover {
     cursor: pointer;
-    min-width: 25vw;
-    min-height: 30vh;
     box-shadow: 5px 5px 3px #888;
-    transition: min-width 0.5s, min-height 0.5s ;
     background-color: Azure;
 }
 .title-box{
@@ -90,7 +98,6 @@ export default {
 }
 .title-card{
   font-size: 1.8em;
-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -101,13 +108,16 @@ export default {
   padding: 5%;
   text-align: right;
   color: darkgray;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #mainbox{
   box-sizing: border-box;
   min-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: baseline;
 
 }

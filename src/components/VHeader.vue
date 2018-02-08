@@ -1,14 +1,14 @@
 <template >
   <div class="header is-row">
-    <div class="logo">
-      <span>chega junto</span>
+    <div class="logo full-center">
+      <span>CHEGA JUNTO!</span>
     </div>
     <div class="header-buttons is-row">
-      <div class="login">
-        <div class="btn-primary border-primary btn-size is-second-text">Login</div>
+      <div class="login is-row">
+        <div class="btn-primary">Entrar</div>
       </div>
-      <div class="singin">
-        <div class="btn-primary border-primary btn-size .btn-size is-second-text">Cadastrar</div>
+      <div class="singin is-row">
+        <div class="btn-primary">Inscrever-se</div>
       </div>
     </div>
   </div>
@@ -24,22 +24,21 @@ export default {
   min-width: 100%;
   justify-content:space-between;
   align-items: center;
-  height: 6vh;
-}
-.btn-size{
-  width: 6vw;
-}
-.btn-primary{
-
+  height: 10vh;
 }
 .logo{
-  min-width: 10%;
+  min-width: 15%;
+  min-height: 100%;
+  color: white;
 }
 .header-buttons{
-  min-width: 18%;
+  min-width: 20%;
+  min-height: 100%;
   justify-content:space-around;
+  align-items: center;
 }
 .login, .singin{
-  flex-grow: 3;
+  min-width: 40%;
+  color: var(--second-text-color);
 }
 </style>

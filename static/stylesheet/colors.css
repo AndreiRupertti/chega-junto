@@ -1,3 +1,11 @@
+:root{
+  --primary-color: #1D2D44;
+  --primary-dark-color: #0D1321;
+  --second-color: Mediumseagreen;
+  --shadow-color: rgb(88, 81, 96);
+  --primary-text-color: #CDDDDD;
+  --second-text-color: #ACBDBA;
+}
 .is-primary{
   background-color: #1D2D44;
 }
@@ -5,7 +13,7 @@
   background-color: #0D1321;
 }
 .is-second{
-  background-color: #E7E247;
+  background-color: Mediumseagreen;
 }
 .is-warning{
   background-color: #FDD835;
@@ -23,7 +31,6 @@
 .is-second-text{
   color: #ACBDBA;
 }
-
 .border-primary{
   border: 1px solid #1D2D44;
 }

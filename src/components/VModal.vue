@@ -1,7 +1,7 @@
 <template >
   <modal name="event-modal" height="auto" width="80%" :scrollable="true">
     <div class="event-modal">
-      <div class="header-modal">
+      <div class="header-modal is-row">
         <div class="title-modal">
           <div class="is-collum full-center">
             <h1 class="title-text">{{selectedEvent.title}}</h1>
@@ -54,8 +54,6 @@ export default {
   padding: 3%;
 }
 .header-modal{
-  display: flex;
-  flex-direction: row;
   justify-content:space-between;
 }
 .title-modal{
@@ -64,7 +62,6 @@ export default {
   overflow:hidden;
 }
 .title-text{
-  font-family: 'Fira Sans', sans-serif;
   display: flex;
   flex-shrink: 1;
 }
@@ -74,6 +71,6 @@ export default {
 .btn-join{
   min-width: 20vw;
   min-height: 5vh;
-  background-color: aqua;
+  background-color: var(--second-color);
 }
 </style>

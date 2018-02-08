@@ -96,24 +96,24 @@ export default {
     flex-grow: 3;
   }
   #cardbox{
-      justify-content: flex-start;
+    justify-content: flex-start;
   }
 }
 .card{
-  border-top: 10px solid MediumSeaGreen;
+  border-top: 10px solid var(--second-color);
   min-height: 25vh;
   justify-content: space-around;
   margin: 3vw;
 }
 .card:hover {
-    cursor: pointer;
-    box-shadow: 3px 3px 1px gray;
-    background-color: #1D2D44;
+  cursor: pointer;
+  box-shadow: 3px 3px 1px var(--shadow-color);
+  background-color: var(--primary-color);
 }
 .info{
   padding: 5%;
   text-align: right;
-  color: darkgray;
+  color: var(--second-text-color)
 }
 #cardbox{
   min-width: 100%;

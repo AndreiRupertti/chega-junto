@@ -9,7 +9,7 @@
             <div class="text-large no-text-overflow">{{event.title}}</div>
           </div>
           <div class="info is-second-text is-collum no-text-overflow">
-            <span><h4>{{event.organization}}</h4></span>
+            <span><h4>{{event.adress}}</h4></span>
             <span>Data: {{event.date}}</span>
             <span>Horário: {{event.schedule}} </span>
           </div>

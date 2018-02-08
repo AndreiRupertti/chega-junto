@@ -8,6 +8,7 @@
             <div class="list-info">
               <ul>
                 <li>Organização: {{selectedEvent.organization}}</li>
+                <li>Localização: {{selectedEvent.adress}}</li>
                 <li>Data: {{selectedEvent.date}}</li>
                 <li>Horário: {{selectedEvent.schedule}}</li>
               </ul>
@@ -23,6 +24,7 @@
       <div class="main-modal">
         <h3>Descrição do Evento</h3>
         <p>{{selectedEvent.description}}</p>
+        <p><b>Contato: <span class="contact-link">{{selectedEvent.contact}}</span></b></p>
       </div>
       <div class="is-row full-center">
         <button @click="alert()" class="btn-shadow">
@@ -72,5 +74,8 @@ export default {
   min-width: 20vw;
   min-height: 5vh;
   background-color: var(--second-color);
+}
+.contact-link{
+  color: #BF360C;
 }
 </style>

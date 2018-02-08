@@ -26,7 +26,7 @@ html, body{
 }
 
 .btn-shadow{
-  background-color: #4CAF50; /* Green */
+  background-color: var(--second-color); /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -42,6 +42,13 @@ html, body{
 }
 .btn-primary{
   background: none;
+  width: 100%;
+  padding: 3%;
+  border: 1px solid var(--primary-color);
+}
+.btn-primary:hover{
+  border: 2px solid var(--second-color);
+  cursor: pointer;
 }
 .btn-close{
   font-size: 2.5em;

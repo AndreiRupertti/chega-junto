@@ -6,7 +6,6 @@ module.exports = {
       .url(devServer)
       .waitForElementVisible('#app', 5000)
       .assert.elementPresent('.main ')
-      .assert.containsText('h1', 'Chega Junto!')
       .assert.elementPresent('#cardbox')
       .assert.elementPresent('.card')
       .assert.elementPresent('.title-card')

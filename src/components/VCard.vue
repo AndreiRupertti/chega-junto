@@ -1,11 +1,11 @@
 <template>
-  <div class="container is-collum full-center">
+  <div class="is-collum full-center">
     <div class="search-box is-row full-center">
       <span class="icon-search"><i class="fa fa-search"></i></span>
       <input v-model='filterText' id="search" placeholder="Pesquisar...">
     </div>
     <div class="container is-row">
-      <div class="cardbox">
+        <div class="cardbox">
           <div v-for="event in filteredEvents" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card border-primary is-collum">
             <div class="full-center is-primary-text">
               <div class="text-large no-text-overflow">{{event.title}}</div>
@@ -17,8 +17,8 @@
             </div>
           </div>
           <v-modal :selectedEvent='selectedEvent'></v-modal>
-        <slot></slot>
-      </div>
+          <slot></slot>
+        </div>
     </div>
   </div>
 </template>
@@ -102,21 +102,24 @@ export default {
     flex-grow: 3;
   }
   .cardbox{
-    justify-content: flex-start;
+      justify-content: flex-start;
   }
 }
 .cardbox{
   max-width: 90%;
+  min-width: 90%;
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
 }
 .cardbox::after {
   content: '';
   width: 100%;
 }
 .container{
+  width: 100vw;
   justify-content: center;
+  align-items: center;
 }
 .card{
   border-top: 10px solid var(--second-color);
@@ -142,6 +145,7 @@ export default {
   min-width: 20vw;
 }
 .icon-search i{
+  padding: 20%;
   font-size: 1.2em;
   color: var(--second-text-color);
 }

@@ -1,4 +1,5 @@
 
+
 # Chega Junto!
 ### PT-BR
 Aplicação Web em andamento, desenvolvida em VueJS com cobertura de testes e layout responsivo. A aplicaço visa amenizar a dor das pessoas que buscam participar de eventos beneficentes e esbarram na burocracia ou não possuem conhecimento de eventos proxímos a sua cidade.
@@ -6,8 +7,8 @@ Aplicação Web em andamento, desenvolvida em VueJS com cobertura de testes e la
 ### EN
 Work-in-progress web application, developed in VueJs with tests coverage and a responsive layout. The application aims to soften the pain of people that try to participate in charity events but get caught on the burocracy or just dont know any events around their city.
 
-Staging: https://chegajunto-staging.herokuapp.com/#/
-Production: (Not yet)
+#### Staging: https://chegajunto-staging.herokuapp.com/#/
+#### Production: (Not yet)
 
 # API
 

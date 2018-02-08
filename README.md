@@ -1,30 +1,16 @@
-# client
+# Chega Junto!
+``PT-BR``
+Aplicação Web em andamento, desenvolvida em VueJS com cobertura de testes e layout responsivo. A aplicaço visa amenizar a dor das pessoas que buscam participar de eventos beneficentes e esbarram na burocracia ou não possuem conhecimento de eventos proxímos a sua cidade.
 
-> A Vue.js project
+``EN``
+Work-in-progress web application, developed in VueJs with tests coverage and a responsive layout. The application aims to soften the pain of people that try to participate in charity events but get caught on the burocracy or just dont know any events around their city.
 
-## Build Setup
+Staging: https://chegajunto-staging.herokuapp.com/#/
+Production: (Not yet)
 
-``` bash
-# install dependencies
-npm install
+#API
+``PT-BR``
+Esta aplicação utiliza uma API em NodeJS para suas conexes com o banco de dados(MongoDB). A API(em andamento)foi desenvolvida pelo mesmo autor e seu repositório pode ser encontrado em: https://github.com/AndreiRupertti/chega-junto-api
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+``EN``
+This application uses an Node JS API for its connections with the database(MongoDB). The work-in-progress API was developed by the same author and its repository can be found here: https://github.com/AndreiRupertti/chega-junto-api

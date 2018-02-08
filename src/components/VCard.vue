@@ -4,19 +4,21 @@
       <span class="icon-search"><i class="fa fa-search"></i></span>
       <input v-model='filterText' id="search" placeholder="Pesquisar...">
     </div>
-    <div id="cardbox">
-        <div v-for="event in filteredEvents" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card border-primary is-collum">
-          <div class="full-center is-primary-text">
-            <div class="text-large no-text-overflow">{{event.title}}</div>
+    <div class="container is-row">
+      <div class="cardbox">
+          <div v-for="event in filteredEvents" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card border-primary is-collum">
+            <div class="full-center is-primary-text">
+              <div class="text-large no-text-overflow">{{event.title}}</div>
+            </div>
+            <div class="info is-second-text is-collum no-text-overflow">
+              <span><h4>{{event.adress}}</h4></span>
+              <span>Data: {{event.date}}</span>
+              <span>Horário: {{event.schedule}} </span>
+            </div>
           </div>
-          <div class="info is-second-text is-collum no-text-overflow">
-            <span><h4>{{event.adress}}</h4></span>
-            <span>Data: {{event.date}}</span>
-            <span>Horário: {{event.schedule}} </span>
-          </div>
-        </div>
-        <v-modal :selectedEvent='selectedEvent'></v-modal>
-      <slot></slot>
+          <v-modal :selectedEvent='selectedEvent'></v-modal>
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -66,7 +68,7 @@ export default {
     filteredEvents () {
       if (this.filterText !== '') {
         let filterText = new RegExp(this.filterText, 'i')
-        return this.events.filter((event) => event.title.match(filterText))
+        return this.events.filter((event) => (event.title.match(filterText) || event.adress.match(filterText)))
       } else {
         return this.events
       }
@@ -85,8 +87,8 @@ export default {
     min-width: 40vw;
     flex-grow: 3;
   }
-  #cardbox{
-      justify-content: center;
+  .cardbox{
+    justify-content: center;
   }
   .icon-search{
     visibility:hidden;
@@ -99,19 +101,22 @@ export default {
     min-width: 20vw;
     flex-grow: 3;
   }
-  #cardbox{
+  .cardbox{
     justify-content: flex-start;
   }
 }
-#cardbox{
-  min-width: 100%;
+.cardbox{
+  max-width: 90%;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
 }
-#cardbox::after {
+.cardbox::after {
   content: '';
   width: 100%;
+}
+.container{
+  justify-content: center;
 }
 .card{
   border-top: 10px solid var(--second-color);

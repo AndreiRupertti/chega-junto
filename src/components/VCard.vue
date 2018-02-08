@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <div class="search-box">
-      <input v-model='filterText' @keyup.enter="onEnter" type="search" name="search" placeholder="pesquisar">
+  <div class="container is-collum full-center">
+    <div class="search-box is-row full-center">
+      <span class="icon-search"><i class="fa fa-search"></i></span>
+      <input v-model='filterText' id="search" placeholder="Pesquisar...">
     </div>
     <div id="cardbox">
         <div v-for="event in filteredEvents" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card border-primary is-collum">
@@ -87,6 +88,9 @@ export default {
   #cardbox{
       justify-content: center;
   }
+  .icon-search{
+    visibility:hidden;
+  }
 }
 
 @media only screen and (min-device-width: 1024px){
@@ -98,6 +102,16 @@ export default {
   #cardbox{
     justify-content: flex-start;
   }
+}
+#cardbox{
+  min-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+#cardbox::after {
+  content: '';
+  width: 100%;
 }
 .card{
   border-top: 10px solid var(--second-color);
@@ -115,14 +129,22 @@ export default {
   text-align: right;
   color: var(--second-text-color)
 }
-#cardbox{
-  min-width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
+.search-box{
+  background-color: var(--primary-color);
+  justify-content: space-around;
+  border-radius: 50px 50px;
+  min-height: 5vh;
+  min-width: 20vw;
 }
-#cardbox::after {
-  content: '';
-  width: 100%;
+.icon-search i{
+  font-size: 1.2em;
+  color: var(--second-text-color);
+}
+#search{
+  color: var(--second-text-color);
+  font-size: 1.2em;
+  background: none;
+  border: none;
+  outline: none;
 }
 </style>

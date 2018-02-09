@@ -1,7 +1,7 @@
 <template >
   <div class="header is-row">
     <div class="logo full-center">
-      <span>CHEGA JUNTO!</span>
+      <router-link :to="'/'" tag='span' class="btn-primary" exact>CHEGA JUNTO!</router-link>
     </div>
     <div class="header-buttons is-row">
       <div class="login is-row">

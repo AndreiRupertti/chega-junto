@@ -1,7 +1,7 @@
 <template>
   <div class="main is-primary-dark">
-    <v-header></v-header>
-    <v-card></v-card>
+    <v-header/>
+    <v-card/>
   </div>
 </template>
 

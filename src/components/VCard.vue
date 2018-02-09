@@ -59,7 +59,6 @@ export default {
       /* eslint-enable */
     },
     show (id) {
-      this.cardId = id
       this.$modal.show('event-modal')
     },
     hide () {

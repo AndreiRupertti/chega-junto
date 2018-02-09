@@ -144,6 +144,9 @@ export default {
   min-height: 5vh;
   min-width: 20vw;
 }
+.search-box input:focus{
+  border: 3px solid var(--second-color);
+}
 .icon-search i{
   padding: 20%;
   font-size: 1.2em;

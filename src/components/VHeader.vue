@@ -8,14 +8,21 @@
         <div class="btn-primary">Entrar</div>
       </div>
       <div class="singin is-row">
-        <div class="btn-primary">Inscrever-se</div>
+        <v-link href="/singin">
+          <div class="btn-primary">Inscrever-se</div>
+        </v-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import VLink from '@/components/VLink.vue'
+
 export default {
+  components: {
+    VLink
+  }
 }
 </script>
 

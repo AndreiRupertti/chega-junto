@@ -2,8 +2,8 @@
   <div class="container is-collumn">
     <v-header/>
     <div v-if="(isOrg === false && isPerson === false)" class="perfil-choice">
-      <div class="is-row full-center">
-        <h2 class="title">Como deseja se increver?</h2>
+      <div class="title-container is-row full-center">
+        <h2 class="title-large">Como deseja se increver?</h2>
       </div>
       <div class="container is-row">
         <div @click="choseOrg()" class="org is-row full-center">
@@ -68,8 +68,8 @@ export default {
 .container{
   min-height: 100%;
 }
-.title{
-  color: var(--primary-text-color);
+.title-container{
+  height: 10vh;
 }
 .org{
   flex-grow: 1;

@@ -3,7 +3,7 @@ html, body{
   margin: 0;
   font-family: 'Fira Sans', sans-serif;
 }
-.is-collum{
+.is-collumn{
   display: flex;
   flex-direction: column;
 }
@@ -21,12 +21,24 @@ html, body{
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.text-large{
-  font-size: 1.8em
+.title-large{
+  font-size: 2em;
+  height: bold;
+  color: var(--primary-text-color)
+}
+.title-medium{
+  font-size: 1.6em;
+  height: bold;
+  color: var(--primary-text-color)
+}
+.title-small{
+  font-size: 0.8em;
+  height: bold;
+  color: var(--primary-text-color)
 }
 
 .btn-shadow{
-  background-color: var(--second-color); /* Green */
+  background-color: var(--second-color);
   border: none;
   color: white;
   padding: 15px 32px;
@@ -36,7 +48,7 @@ html, body{
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }

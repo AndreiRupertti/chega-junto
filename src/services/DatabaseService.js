@@ -9,5 +9,8 @@ export default {
   },
   findEventById (id) {
     return Api().post(`findEventById/${id}`)
+  },
+  insertOrg (org) {
+    return Api().post('insertOrg', org)
   }
 }

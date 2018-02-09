@@ -1,6 +1,6 @@
 <template>
-  <div class="is-collum full-center">
-    <div class="search-container is-collum full-center">
+  <div class="is-collumn full-center">
+    <div class="search-container is-collumn full-center">
       <div class="search-box is-row full-center">
         <span class="icon-search"><i class="fa fa-search"></i></span>
         <input v-model='filterText' id="search" placeholder="Pesquisar...">
@@ -8,11 +8,11 @@
     </div>
     <div class="container is-row">
         <div class="cardbox">
-          <div v-for="event in filteredEvents" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card border-primary is-collum">
+          <div v-for="event in filteredEvents" :key="event._id" @click="show(event._id); findEventById(event._id)" class="card border-primary is-collumn">
             <div class="full-center is-primary-text">
-              <div class="text-large no-text-overflow">{{event.title}}</div>
+              <div class="title-large no-text-overflow">{{event.title}}</div>
             </div>
-            <div class="info is-second-text is-collum no-text-overflow">
+            <div class="info is-second-text is-collumn no-text-overflow">
               <span><h4>{{event.adress}}</h4></span>
               <span>Data: {{event.date}}</span>
               <span>Horário: {{event.schedule}} </span>
@@ -46,7 +46,11 @@ export default {
         .then(response => {
           const allOrgs = response.data.query
           /* eslint-disable */
-          allOrgs.forEach((org) => this.events = this.events.concat(org.events))
+          allOrgs.forEach((org) => {
+            if (org.events) {
+              this.events = this.events.concat(org.events)
+            }
+          })
           /* eslint-enable */
         })
         .catch(e => console.log(e))

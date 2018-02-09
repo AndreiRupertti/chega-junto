@@ -3,7 +3,7 @@
     <div class="event-modal">
       <div class="header-modal is-row">
         <div class="title-modal">
-          <div class="is-collum full-center">
+          <div class="is-collumn full-center">
             <h1 class="title-text">{{selectedEvent.title}}</h1>
             <div class="list-info">
               <ul>
@@ -76,6 +76,6 @@ export default {
   background-color: var(--second-color);
 }
 .contact-link{
-  color: #BF360C;
+  color: var(--danger-color);
 }
 </style>

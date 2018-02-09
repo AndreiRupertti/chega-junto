@@ -1,5 +1,5 @@
 <template>
-  <div class="container is-collum">
+  <div class="container is-collumn">
     <v-header/>
     <div v-if="(isOrg === false && isPerson === false)" class="perfil-choice">
       <div class="is-row full-center">
@@ -7,36 +7,44 @@
       </div>
       <div class="container is-row">
         <div @click="choseOrg()" class="org is-row full-center">
-          <div class="imagem full-center">
-            ORGANIZAÇÃO
+          <div class="imagem is-collumn full-center">
+            <h1 class="title-medium">Organização</h1>
+            <span class="fa fa-building"></span>
           </div>
         </div>
         <div class="person is-row full-center">
-          <div class="imagem full-center">
-            Pessoa
+          <div class="imagem is-collumn full-center">
+            <h1 class="title-medium">Voluntário</h1>
+            <span class="fa fa-user"></span>
           </div>
         </div>
       </div>
     </div>
     <div v-else-if="isOrg===true" class="is-row full-center">
-      <button @click="resetPerfilChoice()" type="button" name="button">voltar</button>
-      <input type="text" name="org-name" placeholder="name">
-      <input type="password" name="password" placeholder="password">
+      <v-form-org :newOrg='newOrg'/>
     </div>
   </div>
 </template>
 
 <script>
 import VHeader from '@/components/VHeader.vue'
+import VFormOrg from '@/components/VFormOrg.vue'
 
 export default {
   components: {
-    VHeader
+    VHeader,
+    VFormOrg
   },
   data () {
     return {
       isOrg: false,
-      isPerson: false
+      isPerson: false,
+      newOrg: {
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+      }
     }
   },
   methods: {
@@ -80,8 +88,12 @@ export default {
   background: linear-gradient(to right, var(--primary-dark-color),var(--second-color));
 }
 .imagem{
-  background-color: grey;
-  height: 30%;
+  justify-content: space-between;
+  height: 50%;
   width: 30%;
+}
+.imagem span{
+  color: var(--primary-text-color);
+  font-size: 10em;
 }
 </style>

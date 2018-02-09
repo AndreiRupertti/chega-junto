@@ -1,8 +1,10 @@
 <template>
   <div class="is-collum full-center">
-    <div class="search-box is-row full-center">
-      <span class="icon-search"><i class="fa fa-search"></i></span>
-      <input v-model='filterText' id="search" placeholder="Pesquisar...">
+    <div class="search-container is-collum full-center">
+      <div class="search-box is-row full-center">
+        <span class="icon-search"><i class="fa fa-search"></i></span>
+        <input v-model='filterText' id="search" placeholder="Pesquisar...">
+      </div>
     </div>
     <div class="container is-row">
         <div class="cardbox">
@@ -105,6 +107,7 @@ export default {
       justify-content: flex-start;
   }
 }
+
 .cardbox{
   max-width: 90%;
   min-width: 90%;
@@ -129,13 +132,16 @@ export default {
 }
 .card:hover {
   cursor: pointer;
-  box-shadow: 3px 3px 1px var(--shadow-color);
+  box-shadow: 2px 2px 1px var(--shadow-color);
   background-color: var(--primary-color);
 }
 .info{
   padding: 5%;
   text-align: right;
   color: var(--second-text-color)
+}
+.search-container{
+  min-height: 6vh;
 }
 .search-box{
   background-color: var(--primary-color);
@@ -144,8 +150,12 @@ export default {
   min-height: 5vh;
   min-width: 20vw;
 }
-.search-box input:focus{
-  border: 3px solid var(--second-color);
+.search-box:focus-within i{
+  color: var(--second-color);
+}
+.search-box:focus-within{
+  /* color: var(--second-color); */
+  border: 2px solid var(--second-color);
 }
 .icon-search i{
   padding: 20%;

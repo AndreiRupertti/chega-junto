@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import IndexPage from '@/pages/indexPage'
+import SinginPage from '@/pages/singinPage'
 
 Vue.use(Router)
 
@@ -12,9 +13,9 @@ export default new Router({
       component: IndexPage
     },
     {
-      path: '/about',
-      name: 'about',
-      component: IndexPage
+      path: '/singin',
+      name: 'singin',
+      component: SinginPage
     }
   ]
 })

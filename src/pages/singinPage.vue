@@ -1,99 +1,152 @@
 <template>
-  <div class="container is-collumn">
-    <v-header/>
-    <div v-if="(isOrg === false && isPerson === false)" class="perfil-choice">
-      <div class="title-container is-row full-center">
-        <h2 class="title-large">Como deseja se increver?</h2>
-      </div>
-      <div class="container is-row">
-        <div @click="choseOrg()" class="org is-row full-center">
-          <div class="imagem is-collumn full-center">
-            <h1 class="title-medium">Organização</h1>
-            <span class="fa fa-building"></span>
-          </div>
-        </div>
-        <div class="person is-row full-center">
-          <div class="imagem is-collumn full-center">
-            <h1 class="title-medium">Voluntário</h1>
-            <span class="fa fa-user"></span>
-          </div>
-        </div>
-      </div>
+  <div class="is-collumn">
+    <div class="">
+      <v-header></v-header>
     </div>
-    <div v-else-if="isOrg===true" class="is-row full-center">
-      <v-form-org :newOrg='newOrg'/>
+    <div class="full-center is-row">
+      <div class="form-div is-collumn">
+        <div class="title-large is-collumn">
+          <span >Inscreva-se</span>
+        </div>
+        <div class="form-body is-collumn">
+          <div class="input-box">
+            <input v-model='newUser.name' class="form-input" type="text" name="nameUser" placeholder='Nome de Usuário' required>
+          </div>
+          <div class="input-box">
+            <input v-model='newUser.email' class="form-input" type="email" name="emailUser" placeholder='Email' required>
+          </div>
+          <div class="input-box">
+            <input v-model='newUser.password' class="form-input" type="password" name="password" placeholder='Senha' required>
+          </div>
+          <div class="input-box">
+            <input v-model='newUser.confirmPassword' id='confirmPassword' class="form-input" type="password" name="confirm-password" placeholder='Confirmar Senha' required>
+          </div>
+           <div class="is-collumn">
+            <span class="warning"> {{ errorMessage }}</span>
+          </div>
+          <div class="form-button is-collumn">
+            <button @click='insertUser()' type="button" name="button" class="btn-shadow">Salvar</button>
+            <router-link :to="'/'" tag="div" class="link" exact>Voltar</router-link>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import DatabaseService from '@/services/DatabaseService'
 import VHeader from '@/components/VHeader.vue'
-import VFormOrg from '@/components/VFormOrg.vue'
+// import routes from '@/router/index'
 
 export default {
   components: {
-    VHeader,
-    VFormOrg
+    VHeader
   },
   data () {
     return {
-      isOrg: false,
-      isPerson: false,
-      newOrg: {
+      newUser: {
         name: '',
         email: '',
         password: '',
         confirmPassword: ''
-      }
+      },
+      errorMessage: ''
     }
   },
   methods: {
-    resetPerfilChoice () {
-      this.isOrg = false
-      this.isPerson = false
+    insertUser () {
+      this.validateUser()
+        .then(isValid => {
+          if (isValid) {
+            // DatabaseService.insertUser(this.newUser)
+            //   .then(response => {
+            //     alert('Sua conta foi criada com sucesso')
+            //     routes.push({name: 'indexPage'})
+            //   })
+            //   .catch(e => {
+            //     alert('Erro: Não foi possível criar sua conta, Tente novamente mais tarde')
+            //     console.log(e)
+            //   })
+          }
+        })
     },
-    choseOrg () {
-      this.isOrg = true
-      this.isPerson = false
-    },
-    chosePerson () {
-      this.isPerson = true
-      this.isOrg = false
+    validateUser () {
+      return DatabaseService.validation(this.newUser)
+        .then(response => {
+          if (response.data.message) {
+            this.errorMessage = response.data.message
+            // alert(response.data.message)
+            return false
+          } else {
+            this.errorMessage = ''
+            return true
+          }
+        })
+        .catch(e => console.log(e))
     }
+  },
+  updated () {
+    this.validateUser()
   }
 }
 </script>
 
 <style scoped>
-.container{
-  min-height: 100%;
+
+@media only screen and (max-device-width: 900px) {
+  .form-div{
+    min-width: 90vw;
+  }
 }
-.title-container{
-  height: 10vh;
+@media only screen and (min-device-width: 900px){
+  .form-div{
+    min-width: 30vw;
+  }
 }
-.org{
-  flex-grow: 1;
-  min-height: 80vh;
+.container {
+  min-height: 90vh;
+  min-width: 100%;
+  justify-content: center;
 }
-.org:hover{
-  cursor: pointer;
-  background: linear-gradient(to left, var(--primary-dark-color),var(--second-color));
+.form-div{
+  min-height: 65vh;
+  max-height: 80vh;
+  justify-content: space-around;
+  border: 2px solid var(--primary-color);
 }
-.person{
-  flex-grow: 1;
-  min-height: 80vh;
+.input-box{
+  min-width: 100%;
 }
-.person:hover{
-  cursor: pointer;
-  background: linear-gradient(to right, var(--primary-dark-color),var(--second-color));
+.form-body{
+  min-height: 50vh;
+  min-width: 100%;
+  align-items: center;
+  justify-content: space-around;
 }
-.imagem{
-  justify-content: space-between;
-  height: 50%;
-  width: 30%;
-}
-.imagem span{
+.form-input{
+  min-width: 80%;
+  flex-grow: 2;
+  font-size: 1.1em;
+  background:  none;
+  border: none;
+  border-bottom: 2px solid var(--primary-text-color);
+  outline: none;
   color: var(--primary-text-color);
-  font-size: 10em;
+}
+.form-input:focus{
+  border-bottom: 2px solid var(--second-color);
+}
+.form-button{
+  min-height: 15vh;
+  justify-content: space-around;
+}
+.link{
+  text-decoration:underline;
+  cursor: pointer;
+  color: var(--primary-text-color);
+}
+.warning{
+  color: var(--danger-color);
 }
 </style>

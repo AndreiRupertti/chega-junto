@@ -10,7 +10,10 @@ export default {
   findEventById (id) {
     return Api().post(`findEventById/${id}`)
   },
-  insertOrg (org) {
-    return Api().post('insertOrg', org)
+  insertUser (user) {
+    return Api().post('insertUser', user)
+  },
+  validation (user) {
+    return Api().post('validation', user)
   }
 }
